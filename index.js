@@ -70,3 +70,9 @@ if (text === '.sticker' && msg.message.imageMessage) {
   });
 }
 start();
+import http from 'http';
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('NEON DEX V2 ONLINE');
+}).listen(PORT, () => console.log('Port running on ' + PORT));
