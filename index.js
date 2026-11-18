@@ -18,7 +18,7 @@ async function start() {
     printQRInTerminal: false
   });
 
-  const MY_NUMBER = "2349163695790";
+  const MY_NUMBER = "2349163699750";
 
   if (!sock.authState.creds.registered) {
     setTimeout(async () => {
