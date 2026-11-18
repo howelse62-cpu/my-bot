@@ -39,14 +39,15 @@ async function start() {
     const from = msg.key.remoteJid;
     const reply = (t) => sock.sendMessage(from, { text: t }, { quoted: msg });
 
-    if (text === '.menu' || text === 'hi' || text === 'hello') return reply('NEON DEX MENU:\n.ping .joke .quote .time .date .owner .info .help');
+    if (text === '.menu' || text === 'hi' || text === 'hello') return reply('NEON DEX MENU:
+.ping .joke .quote .time .date .owner .info .help .ai .sticker .song .weather);
     if (text === '.ping') return reply('Pong! NEON DEX dey fast die!');
     if (text === '.joke') return reply('Why did phone go to school? To get smarter!');
     if (text === '.quote') return reply('No be who first start dey win, na who no give up.');
     if (text === '.time') return reply('Time for Abuja: ' + new Date().toLocaleTimeString('en-NG', { timeZone: 'Africa/Lagos' }));
     if (text === '.date') return reply('Date: ' + new Date().toLocaleDateString('en-NG', { timeZone: 'Africa/Lagos' }));
-    if (text === '.owner') return reply('Owner: Boss fo Auwal, Creator of NEON DEX V2');
-    if (text === '.info') return reply('NEON DEX V2 Running on Tecno Spark 7 | 100% FREE!');
+    if (text === '.owner') return reply('Owner: clef dev , Creator of NEON DEX V2');
+    if (text === '.info') return reply('NEON DEX V2 Running  | 100% FREE!');
     if (text === '.help') return reply('Type .menu to see all commands boss!');
 if (text.startsWith('.ai ')) {
   let q = text.replace('.ai ', '');
@@ -63,14 +64,15 @@ if (text.startsWith('.weather')) {
     await reply(`🌦️ Weather for ${city}\nTemp: ${c.temp_C}°C\nFeels Like: ${c.FeelsLikeC}°C\nCondition: ${c.weatherDesc[0].value}\nHumidity: ${c.humidity}%`);
   } catch { await reply('Weather no gree, try .weather Lagos'); }
 }
-if (text.startsWith('.song ')) {
-  let song = text.replace('.song ', '');
-  await reply(`🎵 You search: ${song}\n\nDownload am here:\nhttps://www.youtube.com/results?search_query=${encodeURIComponent(song)}`);
+if (text.startsWith('.song')) {
+  let q = text.replace('.song', '').trim();
+  if (!q) return reply('Use am like this: .song Asake');
+  await reply('🎵 Your song: ' + q + '\nListen am here: https://www.youtube.com/results?search_query=' + encodeURIComponent(q));
 }
-if (text === '.sticker' && msg.message.imageMessage) {
-  try {
-    let buffer = await downloadMediaMessage(msg, 'buffer', {});
-    await sock.sendMessage(from, { sticker: buffer });
+
+if (text === '.sticker') {
+  await reply('Send image with caption .sticker boss, I go convert am!');
+});
   } catch { await reply('Send picture with caption .sticker'); }
 }
   });
