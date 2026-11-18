@@ -40,7 +40,13 @@ async function start() {
     const reply = (t) => sock.sendMessage(from, { text: t }, { quoted: msg });
 
     if (text === '.menu' || text === 'hi' || text === 'hello') return reply('NEON DEX MENU:
-.ping .joke .quote .time .date .owner .info .help .ai .sticker .song .weather);
+.ping - check if bot alive
+.joke - random joke
+.quote - random quote
+.weather Abuja - weather
+.song Asake - find song
+.sticker - make sticker
+.ai hello - chat with AI);
     if (text === '.ping') return reply('Pong! NEON DEX dey fast die!');
     if (text === '.joke') return reply('Why did phone go to school? To get smarter!');
     if (text === '.quote') return reply('No be who first start dey win, na who no give up.');
